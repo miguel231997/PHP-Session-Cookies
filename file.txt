@@ -1,0 +1,15 @@
+PHP Sessions and Cookies are essential components in web development for managing user data and maintaining stateful interactions. Sessions allow you to store user-specific information across multiple requests, while cookies enable the server to store data on the user's browser. In this context, Output Buffering refers to a technique where the output is stored in a buffer before being sent to the browser, helping to avoid potential conflicts with sending headers.
+
+One common issue when using sessions and cookies is the "Headers Already Sent" warning. This warning occurs when output is sent to the browser before sending headers, which can prevent cookies and session data from being set properly.
+
+To resolve this issue, you can use the PHP function `ob_start()` to enable output buffering. This function tells PHP to store all the output in a buffer rather than sending it directly to the browser. Once output buffering is enabled, you can safely set cookies, start sessions, or modify headers without encountering the "Headers Already Sent" warning.
+
+Here's a brief overview of how to use output buffering:
+
+1. Enable Output Buffering: At the beginning of your script, call `ob_start()` to start output buffering.
+
+2. Set Cookies or Start Sessions: You can now set cookies or start sessions without worrying about headers being sent prematurely.
+
+3. Send Output to the Browser: After setting cookies or starting sessions, call `ob_end_flush()` to send the buffered output to the browser.
+
+By using output buffering, you can avoid the "Headers Already Sent" warning and ensure that cookies and session data are correctly set and maintained in your PHP applications.
